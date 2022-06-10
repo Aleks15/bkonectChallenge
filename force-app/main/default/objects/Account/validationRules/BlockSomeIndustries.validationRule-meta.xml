@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BlockSomeIndustries</fullName>
+    <active>true</active>
+    <description>This validation rule block to insert some define industries</description>
+    <errorConditionFormula>AND(
+    OR(
+								ISCHANGED(Industry),
+								 ISNEW()
+				),
+				OR(
+        ISPICKVAL(Industry, &apos;Chemicals&apos;),
+								ISPICKVAL(Industry, &apos;Education&apos;),
+								ISPICKVAL(Industry, &apos;Machinery&apos;)
+				)
+)</errorConditionFormula>
+    <errorDisplayField>Industry</errorDisplayField>
+    <errorMessage>INVALID INDUSTRY</errorMessage>
+</ValidationRule>
